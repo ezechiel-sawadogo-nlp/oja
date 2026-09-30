@@ -631,7 +631,10 @@ function readFileAsDataURL(file) {
 
 // Options avancées : repliées pour un nouvel article, dépliées à la modification si elles contiennent quelque chose.
 function setAdvancedOpen(open) { document.querySelectorAll('#product-modal details.advanced').forEach(details => { details.open = open; }); }
-function openAdvancedIfFilled() { document.querySelectorAll('#product-modal details.advanced').forEach(details => { details.open = [...details.querySelectorAll('input, select')].some(field => field.type === 'checkbox' ? field.checked : field.type === 'file' ? false : field.value && field.value !== '0') || Boolean(details.querySelector('.image-preview img, .image-preview video')); }); }
+// Déplie (sans jamais replier) les sections qui contiennent quelque chose : appelé juste après le
+// remplissage du formulaire. Ne referme rien, pour ne pas fermer une section que la vendeuse
+// vient d'ouvrir (le repli initial est fait de façon synchrone dans openEdit / openAdd).
+function openAdvancedIfFilled() { document.querySelectorAll('#product-modal details.advanced').forEach(details => { const filled = [...details.querySelectorAll('input, select')].some(field => field.type === 'checkbox' ? field.checked : field.type === 'file' ? false : field.value && field.value !== '0') || Boolean(details.querySelector('.image-preview img, .image-preview video')); if (filled) details.open = true; }); }
 function openAdd() { form.reset(); setAdvancedOpen(false); document.querySelector('#product-id').value = ''; document.querySelector('#form-title').textContent = 'Ajouter un article'; resetMediaPreviews(); renderCategorySelect(); updateSizeTypePlaceholder(); updateDimensionTypePlaceholder(); refreshVariantOptions(['', '', '']); modal.showModal(); }
 function openEdit(id) {
   const product = products.find(item => item.id === id); if (!product) return;
@@ -688,6 +691,7 @@ function openEdit(id) {
   product.media.photos.forEach((photo, index) => { document.querySelector(`#photo-preview-${index + 1}`).innerHTML = `<img src="${photo}" alt="Aperçu">`; });
   document.querySelector('#product-worn-count').value = String(product.media.wornCount);
   refreshVariantOptions(product.media.variants || []);
+  setAdvancedOpen(false);
   setTimeout(openAdvancedIfFilled, 0);
   if (product.media.video) document.querySelector('#video-preview').textContent = 'Vidéo déjà enregistrée pour cet article';
   document.querySelector('#form-title').textContent = 'Modifier l’article'; modal.showModal();

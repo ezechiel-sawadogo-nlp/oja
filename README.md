@@ -175,7 +175,7 @@ node eval_routing.js --file corpus/corpus_clientes.jsonl
 ## Tests
 
 ```powershell
-npm test                # moteur (19) + NLU (101) + interface (367 tests Playwright)
+npm test                # moteur (19) + NLU (101) + interface (368 tests Playwright)
 ```
 
 Les tests d'interface demandent Python 3 et Playwright (`pip install playwright` puis `python -m playwright install chromium`). Chaque fichier `tests/test_*.py` lance son propre serveur et un Chromium sans écran. **Ollama est simulé** : les tests vérifient le routage, les garde-fous et la reprise de commande, sans télécharger de modèle. Tout tourne aussi à chaque push via GitHub Actions.

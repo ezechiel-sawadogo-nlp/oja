@@ -1,5 +1,9 @@
 # Ọjà — journal des chantiers
 
+## 2026-09-30 — Correction d'une course dans le formulaire produit (368 tests Playwright)
+
+- À la modification d'un article, le dépliage automatique des sections remplies (différé de 0 ms) pouvait refermer une section que la vendeuse venait d'ouvrir. Visible sur GitHub Actions, où 2 fichiers de tests échouaient par intermittence. Le dépliage n'ouvre plus que les sections remplies et ne referme jamais rien ; le repli initial est fait tout de suite. +1 test de régression.
+
 ## 2026-09-30 — Deux faux amis corrigés (v2.6)
 
 - « vous faites des robes sur mesure ? » ne répond plus par la liste des tailles, et « ma commande d'hier est arrivée où ? » (ou « où en est ma commande ») ne démarre plus une nouvelle commande. Mécanisme : des règles de faux amis dans `nlu.js` retirent l'intention déclenchée par erreur, et le message part à l'assistant (ou à la vendeuse sans assistant).

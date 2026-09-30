@@ -80,6 +80,10 @@ def run():
         page.wait_for_selector("#product-modal[open]")
         page.wait_for_timeout(100)
         check("à la modification, une section avancée remplie s'ouvre automatiquement", page.locator("#product-modal details.advanced[open]").count() >= 1 and page.is_visible("#clothes-range-name"))
+        # Régression (course vue sur GitHub Actions) : le dépliage différé ne doit jamais refermer une
+        # section que la vendeuse vient d'ouvrir, même vide.
+        page.evaluate("document.querySelectorAll('#product-modal details.advanced').forEach(d => d.open = true); openAdvancedIfFilled()")
+        check("le dépliage automatique ne referme pas une section ouverte à la main", page.locator("#product-modal details.advanced:not([open])").count() == 0)
         page.click(".close-modal")
 
         # --- Lisibilité du téléphone ---
