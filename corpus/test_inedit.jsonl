@@ -1,0 +1,80 @@
+{"text": "bonsoir ma soeur la robe là c'est à combien", "intent": "price", "route": "regles"}
+{"text": "slt vs vendez a cmb la robe beige", "intent": "price", "route": "regles"}
+{"text": "le prix de la robe svp", "intent": "price", "route": "regles"}
+{"text": "18500 c'est trop, fais moi 15000", "intent": "price", "route": "vendeuse", "note": "négociation"}
+{"text": "y a pas de réduction si je prends deux ?", "intent": "price", "route": "vendeuse", "note": "négociation"}
+{"text": "vous avez encore la robe ?", "intent": "stock", "route": "regles"}
+{"text": "est ce que c'est toujours dispo", "intent": "stock", "route": "regles"}
+{"text": "il reste combien de pièces", "intent": "stock", "route": "regles"}
+{"text": "elle existe en noir ?", "intent": "color", "route": "regles"}
+{"text": "vous avez quelles couleurs", "intent": "color", "route": "regles"}
+{"text": "c'est dispo en rouge ?", "intent": "color", "route": "regles", "note": "couleur absente : doit le dire"}
+{"text": "vous avez la taille L ?", "intent": "size", "route": "regles"}
+{"text": "ça va jusqu'à quelle taille", "intent": "size", "route": "regles"}
+{"text": "je fais du 42 vous avez ?", "intent": "size", "route": "regles"}
+{"text": "vous ouvrez à quelle heure le samedi", "intent": "hours", "route": "regles"}
+{"text": "la boutique ferme à quelle heure", "intent": "hours", "route": "regles"}
+{"text": "vous êtes ouverts le dimanche ?", "intent": "hours", "route": "regles"}
+{"text": "vous livrez à Bobo ?", "intent": "delivery", "route": "regles"}
+{"text": "la livraison c'est combien", "intent": "delivery", "route": "regles"}
+{"text": "je suis à Tanghin vous pouvez livrer ?", "intent": "delivery", "route": "regles"}
+{"text": "si je commande aujourd'hui je reçois quand", "intent": "delivery", "route": "regles"}
+{"text": "on paie comment", "intent": "payment", "route": "regles"}
+{"text": "je peux payer par orange money ?", "intent": "payment", "route": "regles"}
+{"text": "vous prenez wave", "intent": "payment", "route": "regles"}
+{"text": "je paie à la livraison c'est possible ?", "intent": "payment", "route": "regles"}
+{"text": "je peux payer en deux fois ?", "intent": "installment", "route": "regles"}
+{"text": "je donne une avance et le reste à la fin du mois ?", "intent": "installment", "route": "regles"}
+{"text": "c'est où votre boutique", "intent": "pickup", "route": "vendeuse", "note": "adresse absente des données"}
+{"text": "je peux passer la récupérer moi même ?", "intent": "pickup", "route": "vendeuse"}
+{"text": "envoyez moi d'autres photos", "intent": "photos", "route": "regles"}
+{"text": "vous avez une photo de dos ?", "intent": "photos", "route": "regles"}
+{"text": "je peux la voir portée ?", "intent": "worn", "route": "vendeuse", "note": "pas de photo portée dans les données"}
+{"text": "une vidéo de la robe svp", "intent": "video", "route": "vendeuse", "note": "pas de vidéo dans les données"}
+{"text": "c'est quel tissu", "intent": "material", "route": "regles"}
+{"text": "elle est faite en quoi", "intent": "material", "route": "regles"}
+{"text": "c'est du vrai satin ?", "intent": "material", "route": "regles"}
+{"text": "ça se lave comment", "intent": "advice", "route": "assistant"}
+{"text": "on peut la mettre à la machine ?", "intent": "advice", "route": "assistant"}
+{"text": "le satin ça froisse vite non ?", "intent": "advice", "route": "assistant"}
+{"text": "elle est pas trop transparente ?", "intent": "advice", "route": "assistant"}
+{"text": "je fais 1m65 et 70 kilos, je prends quoi", "intent": "advice", "route": "assistant"}
+{"text": "elle taille grand ou petit ?", "intent": "advice", "route": "assistant"}
+{"text": "je peux la porter pour un baptême ?", "intent": "advice", "route": "assistant"}
+{"text": "je la mets avec quelles chaussures", "intent": "advice", "route": "assistant"}
+{"text": "ça tient chaud ? il fait 40 degrés ici", "intent": "advice", "route": "assistant"}
+{"text": "ça déteint au premier lavage ?", "intent": "advice", "route": "assistant"}
+{"text": "le sac est imperméable si il pleut ?", "intent": "advice", "route": "assistant"}
+{"text": "on peut repasser le satin ?", "intent": "advice", "route": "assistant"}
+{"text": "je peux parler à la patronne ?", "intent": "human", "route": "vendeuse"}
+{"text": "donnez moi votre numéro", "intent": "human", "route": "vendeuse"}
+{"text": "je veux parler à quelqu'un de réel", "intent": "human", "route": "vendeuse"}
+{"text": "je prends la M", "intent": "order", "route": "regles"}
+{"text": "je veux commander la robe", "intent": "order", "route": "regles"}
+{"text": "mettez m'en deux", "intent": "order", "route": "regles"}
+{"text": "ok je la prends en noir taille S", "intent": "order", "route": "regles"}
+{"text": "réservez la moi", "intent": "order", "route": "regles"}
+{"text": "merci beaucoup ma chérie", "intent": "thanks", "route": "regles"}
+{"text": "merci hein", "intent": "thanks", "route": "regles"}
+{"text": "bonjour", "intent": "greeting", "route": "regles"}
+{"text": "on dit quoi", "intent": "greeting", "route": "regles", "note": "salutation burkinabè"}
+{"text": "bonsoir madame", "intent": "greeting", "route": "regles"}
+{"text": "je veux plus de détails sur la robe", "intent": "info", "route": "regles"}
+{"text": "c'est pas une arnaque ?", "intent": "doubt", "route": "regles"}
+{"text": "j'hésite un peu", "intent": "doubt", "route": "regles"}
+{"text": "vous êtes sérieux ? on m'a déjà volé sur facebook", "intent": "doubt", "route": "regles"}
+{"text": "non merci finalement", "intent": "negative", "route": "regles"}
+{"text": "laisse tomber", "intent": "negative", "route": "regles"}
+{"text": "vous faites des robes sur mesure ?", "intent": "none", "route": "assistant", "note": "hors données : l'assistant doit transférer s'il n'est pas sûr"}
+{"text": "vous vendez des perruques ?", "intent": "none", "route": "assistant"}
+{"text": "vous recrutez des vendeuses ?", "intent": "none", "route": "assistant"}
+{"text": "ma commande d'hier est arrivée où ?", "intent": "none", "route": "assistant"}
+{"text": "c'est combien et vous livrez à Ouaga 2000 ?", "intent": "price", "route": "regles", "note": "double question"}
+{"text": "vous avez en M et ça se lave à la machine ?", "intent": "advice", "route": "assistant", "note": "double question, taille + conseil"}
+{"text": "cbn la robe et vs acceptez moov ?", "intent": "price", "route": "regles", "note": "SMS + double question"}
+{"text": "elle est jolie wallahi", "intent": "none", "route": "assistant", "note": "compliment sans question"}
+{"text": "ok", "intent": "affirmative", "route": "regles"}
+{"text": "d'accord je vois", "intent": "affirmative", "route": "regles"}
+{"text": "vous pouvez me l'envoyer à Koudougou ?", "intent": "delivery", "route": "regles"}
+{"text": "le satin c'est pas trop chaud pour la saison ?", "intent": "advice", "route": "assistant"}
+{"text": "si ça me va pas je peux échanger ?", "intent": "none", "route": "assistant", "note": "politique d'échange absente des données"}

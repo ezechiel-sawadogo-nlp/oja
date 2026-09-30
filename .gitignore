@@ -1,0 +1,24 @@
+# Runtime data (shop state, WhatsApp inbox, exports) — never commit real shop data
+server/data/*
+!server/data/.gitignore
+*.jsonl.bak
+oja-export*.json
+oja-commandes*.csv
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Test fixtures generated at runtime
+*.mp4
+tests/*.png
+
+# Node / Python / OS
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

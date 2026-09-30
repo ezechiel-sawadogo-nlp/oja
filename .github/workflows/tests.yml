@@ -1,0 +1,29 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Playwright
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Engine tests (Node)
+        run: npm run test:engine
+      - name: NLU evaluation
+        run: npm run eval:nlu
+      - name: Routing evaluation (held-out set, informational)
+        run: npm run eval:routing && npm run eval:inedit
+      - name: UI tests (Playwright)
+        run: npm run test:ui

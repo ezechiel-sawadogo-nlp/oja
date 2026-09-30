@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ọjà — Démo vendeur</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <section class="onboarding" id="onboarding" aria-labelledby="onboarding-title">
+      <div class="onboarding-card">
+        <div class="onboarding-step" id="onboarding-step-1">
+        <p class="eyebrow">Bienvenue chez Ọjà · Étape 1 sur 3</p>
+        <h1 id="onboarding-title">Que vendez-vous ?</h1>
+        <p>Choisissez une ou plusieurs catégories. Vous pourrez en ajouter ou en retirer plus tard.</p>
+        <div class="category-choices">
+          <button type="button" class="category-choice clothes" data-category="Vêtements"><span>👗</span><strong>Vêtements</strong><small>Robes, ensembles, chaussures</small></button>
+          <button type="button" class="category-choice beauty" data-category="Cosmétiques"><span>✨</span><strong>Cosmétiques</strong><small>Soins, maquillage, parfums</small></button>
+          <button type="button" class="category-choice accessories" data-category="Accessoires"><span>👜</span><strong>Accessoires</strong><small>Sacs, bijoux, montres, lunettes</small></button>
+        </div>
+        <div class="selected-categories" id="selected-categories">Aucune catégorie sélectionnée</div>
+        <button type="button" class="continue-button" id="continue-button" disabled>Continuer avec Ọjà</button>
+        </div>
+        <div class="onboarding-step hidden" id="onboarding-step-2">
+          <p class="eyebrow">Étape 2 sur 3</p>
+          <h1>Ajoutez votre premier article</h1>
+          <p>Ọjà ne parle à vos clientes que de ce que vous mettez dans votre catalogue : nom, prix, tailles ou couleurs, stock. Un seul article suffit pour commencer.</p>
+          <button type="button" class="continue-button" id="onboarding-add-product">Ajouter mon premier article</button>
+          <div class="onboarding-alternatives">
+            <button type="button" class="text-button" id="load-demo-button">Découvrir d'abord avec 3 articles d'exemple</button>
+            <button type="button" class="text-button" id="onboarding-later">Plus tard</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <main class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#"><span>Ọ</span>jà</a>
+        <p class="tagline">Le marché, plus simple.</p>
+        <nav>
+          <button class="nav-item active" data-view="home"><span>⌂</span> Accueil</button>
+          <button class="nav-item" data-view="conversations"><span>💬</span> Conversations <b id="conversation-count" class="hidden">0</b></button>
+          <button class="nav-item" data-view="orders"><span>◫</span> Commandes <b id="order-count">2</b></button>
+          <button class="nav-item" data-view="catalog"><span>◈</span> Catalogue</button>
+          <button class="nav-item" data-view="customers"><span>♧</span> Clients</button>
+        </nav>
+        <div class="sidebar-card">
+          <span class="sparkle">✦</span>
+          <strong>Votre assistant est actif</strong>
+          <p>Ọjà répond à vos clients, même lorsque vous êtes occupée.</p>
+        </div>
+        <button type="button" class="profile" id="profile-button"><div class="avatar" id="profile-avatar">JK</div><div><strong id="profile-seller-name">Josie K.</strong><small id="profile-shop-name">Ma boutique</small></div><span>⌄</span></button>
+        <button type="button" class="settings-link" id="settings-button"><span>⚙</span> Réglages</button>
+      </aside>
+
+      <div class="sync-banner hidden" id="sync-banner"></div>
+      <section class="dashboard">
+        <div id="home-view">
+        <header class="topbar">
+          <div><p class="eyebrow" id="home-date">Aujourd'hui</p><h1>Bonjour, <span id="home-greeting-name">Josie</span> <span>👋</span></h1></div>
+          <div class="topbar-actions"><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Activer le mode nuit" title="Activer le mode nuit">☾</button><button class="category-manage" data-action="categories">Catégories</button><button class="help"><span>Besoin d'aide</span>?</button>
+            <div class="mobile-profile">
+              <button type="button" class="mobile-profile-avatar" id="mobile-profile-avatar" aria-label="Mon espace">JK</button>
+              <div class="mobile-profile-menu hidden" id="mobile-profile-menu">
+                <button type="button" id="mobile-profile-open-info">Infos boutique</button>
+                <button type="button" id="mobile-profile-open-language">Registre de langue de Ọjà</button>
+                <button type="button" id="mobile-profile-open-settings">Réglages</button>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="first-step hidden" id="first-step"><ol class="first-step-track"><li id="first-step-1"><b>1</b> Catégories choisies</li><li id="first-step-2"><b>2</b> Premier article ajouté</li><li id="first-step-3"><b>3</b> Ọjà a répondu à une cliente</li></ol><div class="first-step-actions"><button type="button" class="primary-button" id="first-step-add">Ajouter un article</button><button type="button" class="text-button" id="first-step-dismiss">Masquer</button></div></div>
+        <div class="category-tabs" id="home-category-tabs"></div>
+        <p class="category-context" id="category-context"></p>
+
+        <section class="summary-grid">
+          <article class="metric highlight"><p>Commandes aujourd'hui</p><strong id="today-orders">2</strong><small>+1 depuis ce matin</small><i>↗</i></article>
+          <article class="metric"><p>Chiffre d'affaires</p><strong id="revenue">35 500 <em>FCFA</em></strong><small>sur les commandes confirmées</small></article>
+          <article class="metric"><p>Clients en discussion</p><strong id="chatting-count">0</strong><small>Ọjà leur répond pour vous</small></article>
+        </section>
+
+        <section class="mobile-summary-grid">
+          <article class="mobile-metric"><p>En attente</p><strong id="mobile-pending-count">0</strong></article>
+          <article class="mobile-metric"><p>Total aujourd'hui</p><strong id="mobile-today-total">0 FCFA</strong></article>
+        </section>
+
+        <section class="content-grid">
+          <article class="panel orders-panel">
+            <div class="panel-title"><div><p class="eyebrow">À traiter</p><h2>Dernières commandes</h2></div><button class="text-button" data-view="orders">Voir tout</button></div>
+            <div class="order-list" id="order-list"></div>
+          </article>
+
+          <article class="panel quick-panel">
+            <p class="eyebrow">Raccourcis</p><h2>Gérer ma boutique</h2>
+            <button class="quick" data-action="Ajouter un produit"><span>＋</span> Ajouter un produit</button>
+            <button class="quick" data-action="promotion"><span>✦</span> Créer une promotion</button>
+            <button class="quick" data-action="catalog"><span>▦</span> Voir mon catalogue</button>
+          </article>
+        </section>
+        <section class="catalog-preview panel">
+          <div class="panel-title"><div><p class="eyebrow">Votre boutique</p><h2 id="products-title">Produits que Ọjà connaît</h2></div><button class="text-button" data-view="catalog">Gérer le catalogue</button></div>
+          <div class="product-row" id="home-products"></div>
+        </section>
+        </div>
+
+        <div id="catalog-view" class="hidden">
+          <header class="topbar"><div><p class="eyebrow">Espace vendeuse</p><h1 id="catalog-title">Mon catalogue</h1><p class="catalog-subtitle">C’est ici qu’Ọjà trouve les informations à envoyer à vos clients.</p></div><div class="catalog-actions"><button class="category-manage" data-action="categories">Catégories</button><button class="primary-button" data-action="Ajouter un produit">＋ Ajouter un produit</button></div></header>
+          <div class="category-tabs" id="catalog-category-tabs"></div>
+          <div class="catalog-status"><span>●</span><div><strong>Catalogue prêt pour Ọjà</strong><p id="catalog-status-text">Vos produits sont disponibles dans vos conversations WhatsApp.</p></div><button data-action="Voir le guide">Voir le guide</button></div>
+          <div class="catalog-grid" id="catalog-products"></div>
+          <button type="button" class="catalog-fab" id="catalog-fab" data-action="Ajouter un produit" aria-label="Ajouter un article">＋</button>
+          <section class="rules-panel panel"><div><p class="eyebrow">Règles de vente</p><h2>Ce qu’Ọjà explique à vos clients</h2></div><div class="rule-grid" id="rule-grid"></div><button class="text-button" data-action="edit-rules">Modifier les règles</button></section>
+        </div>
+
+        <div id="conversations-view" class="hidden">
+          <header class="topbar"><div><p class="eyebrow">Espace vendeuse</p><h1>Conversations</h1><p class="catalog-subtitle">Tout ce qu'Ọjà a dit à vos clientes, et les fils où c'est à vous de répondre. Ouvrez un fil pour le lire ou reprendre la main.</p></div></header>
+          <div class="conversations-list" id="conversations-list"></div>
+        </div>
+
+        <div id="orders-view" class="hidden">
+          <header class="topbar"><div><p class="eyebrow">Espace vendeuse</p><h1>Commandes</h1><p class="catalog-subtitle">Suivez et faites avancer les commandes reçues par Ọjà.</p></div><div class="catalog-actions"><button type="button" class="category-manage" id="export-orders-button">Exporter en tableau (.csv)</button></div></header>
+          <div class="category-tabs" id="orders-category-tabs"></div>
+          <div class="stats-grid" id="orders-stats"></div>
+          <button type="button" class="mobile-stats-toggle" id="orders-stats-toggle">Voir total et top produits <span>▾</span></button>
+          <div class="orders-toolbar">
+            <div class="status-tabs" id="orders-status-tabs"></div>
+            <div class="orders-search">
+              <input id="orders-search-input" placeholder="Rechercher un client..." list="orders-customer-list" />
+              <datalist id="orders-customer-list"></datalist>
+            </div>
+          </div>
+          <div class="orders-list-full" id="orders-list-full"></div>
+        </div>
+
+        <div id="customers-view" class="hidden">
+          <header class="topbar"><div><p class="eyebrow">Espace vendeuse</p><h1>Clients</h1><p class="catalog-subtitle">Retrouvez l’historique et les habitudes d’achat de vos clientes.</p></div></header>
+          <div class="customers-search"><input id="customers-search-input" placeholder="Rechercher un client..." /></div>
+          <div class="category-tabs" id="customers-category-tabs"></div>
+          <div class="customers-grid" id="customers-grid"></div>
+        </div>
+      </section>
+
+      <aside class="phone-zone">
+        <div class="demo-label"><span></span> Ce que voit votre cliente</div>
+        <div class="assistant-badge hidden" id="assistant-badge" title="Réglages → Assistant local">Assistant Ollama activé</div>
+        <p class="phone-thread-label" id="phone-thread-label"></p>
+        <div class="phone">
+          <div class="notch"></div>
+          <div class="whatsapp-head"><button>‹</button><div class="shop-avatar" id="phone-shop-avatar">J</div><div><strong id="phone-shop-name">Josie Style</strong><small>en ligne</small></div><span class="video">⌕</span><span>⋮</span></div>
+          <div class="chat" id="chat"><div class="date-pill">Aujourd'hui</div></div>
+          <div class="suggestions" id="suggestions"></div>
+          <div class="oja-paused hidden" id="oja-paused"><span>Ọjà est en pause, vous répondez.</span><button type="button" id="resume-oja">Rendre la main à Ọjà</button></div>
+          <form class="inputbar" id="composer"><label class="composer-attach"><span>＋</span><input id="composer-image" type="file" accept="image/*" hidden /></label><input id="composer-input" type="text" placeholder="Écrivez un message" autocomplete="off" /><button id="send-button" type="submit">➤</button></form>
+        </div>
+        <div class="phone-mode" id="phone-mode"><button type="button" class="active" data-composer-mode="customer">Je joue la cliente</button><button type="button" data-composer-mode="seller">Je réponds moi-même</button></div>
+        <p class="phone-caption">En mode cliente, Ọjà répond. En mode boutique, vous écrivez à sa place et Ọjà se met en pause sur ce fil.</p>
+      </aside>
+      <nav class="mobile-nav">
+        <button class="mobile-nav-item active" data-mobile-view="home"><span>⌂</span> Accueil</button>
+        <button class="mobile-nav-item" data-mobile-view="conversations"><span>💬</span> Conversations</button>
+        <button class="mobile-nav-item" data-mobile-view="orders"><span>◫</span> Commandes</button>
+        <button class="mobile-nav-item" data-mobile-view="catalog"><span>◈</span> Catalogue</button>
+        <button class="mobile-nav-item" data-mobile-view="customers"><span>♧</span> Clients</button>
+      </nav>
+    </main>
+    <div class="toast" id="toast"></div>
+    <dialog class="product-modal" id="product-modal">
+      <form id="product-form" method="dialog">
+        <div class="modal-header"><div><p class="eyebrow">Espace vendeuse</p><h2 id="form-title">Ajouter un article</h2></div><button class="close-modal" type="button" aria-label="Fermer">×</button></div>
+        <input type="hidden" id="product-id" />
+        <label>Nom de l’article<input id="product-name" required placeholder="Ex. Robe satin beige" /></label>
+        <div class="form-grid"><label>Prix (FCFA)<input id="product-price" type="number" min="0" required placeholder="18 500" /></label><label>Stock disponible<input id="product-stock" type="number" min="0" required placeholder="5" /></label></div>
+        <div class="form-grid"><label>Catégorie<select id="product-category"></select></label></div>
+
+        <div id="fields-Vêtements" class="category-fields">
+          <div class="choice-field">
+            <label>Type de taille<select id="clothes-size-type"><option value="Standard">Standard (S, M, L...)</option><option value="Soutien-gorge">Soutien-gorge (85B, 90C...)</option><option value="Culotte-bas">Culotte / bas (tour de taille)</option></select></label>
+          </div>
+          <div class="choice-field">
+            <label>Taille<select id="clothes-size-mode"><option value="unique">Une seule taille</option><option value="plusieurs">Plusieurs tailles au choix</option></select></label>
+            <input id="clothes-size-values" placeholder="Ex. M ou S, M, L" data-required-when-visible />
+          </div>
+          <div class="choice-field">
+            <label>Couleur<select id="clothes-color-mode"><option value="unique">Une seule couleur</option><option value="plusieurs">Plusieurs couleurs au choix</option></select></label>
+            <input id="clothes-color-values" placeholder="Ex. Beige ou Beige, Rose" data-required-when-visible />
+          </div>
+          <div class="form-grid">
+            <label>Matière<input id="clothes-material" placeholder="Ex. Satin, coton, pagne" data-required-when-visible /></label>
+            <label>Genre <span>(facultatif)</span><input id="clothes-gender" placeholder="Ex. Femme, Homme, Enfant" /></label>
+          </div>
+          <details class="advanced"><summary>Options avancées (ensemble, gamme)</summary>
+          <label>Contenu de l'ensemble <span>(si l'article est vendu en pièces assorties)</span><input id="clothes-set-content" placeholder="Ex. Jupe + top" /></label>
+          <label>Nom de la gamme <span>(si l'article fait partie d'une collection)</span><input id="clothes-range-name" placeholder="Ex. Collection Wax 2026" /></label>
+</details>
+        </div>
+
+        <div id="fields-Cosmétiques" class="category-fields hidden">
+          <label>Type de produit<input id="cosmetics-product-type" placeholder="Ex. Gel douche, rouge à lèvres, pommade" data-required-when-visible /></label>
+
+          <div class="checkbox-field">
+            <label class="checkbox"><input type="checkbox" id="cosmetics-shade-active" /> Ce produit a une teinte / nuance</label>
+            <div id="cosmetics-shade-fields" class="choice-field hidden">
+              <select id="cosmetics-shade-mode"><option value="unique">Une seule teinte</option><option value="plusieurs">Plusieurs teintes au choix</option></select>
+              <input id="cosmetics-shade-values" placeholder="Ex. Rouge ou Rouge, Corail, Rose" />
+            </div>
+          </div>
+
+          <div class="checkbox-field">
+            <label class="checkbox"><input type="checkbox" id="cosmetics-volume-active" /> Ce produit a un volume / une quantité</label>
+            <div id="cosmetics-volume-fields" class="choice-field hidden">
+              <select id="cosmetics-volume-mode"><option value="unique">Un seul format</option><option value="plusieurs">Plusieurs formats au choix</option></select>
+              <input id="cosmetics-volume-values" placeholder="Ex. 250 ml ou 100 ml, 250 ml" />
+            </div>
+          </div>
+
+          <details class="advanced"><summary>Options avancées (longueur, texture, péremption, coffret, gamme)</summary>
+<div class="checkbox-field">
+            <label class="checkbox"><input type="checkbox" id="cosmetics-length-active" /> Cet article a une longueur</label>
+            <div id="cosmetics-length-fields" class="choice-field hidden">
+              <select id="cosmetics-length-mode"><option value="unique">Une seule longueur</option><option value="plusieurs">Plusieurs longueurs au choix</option></select>
+              <input id="cosmetics-length-values" placeholder="Ex. 18 pouces ou 16, 18, 20 pouces" />
+            </div>
+          </div>
+
+          <div class="checkbox-field">
+            <label class="checkbox"><input type="checkbox" id="cosmetics-texture-active" /> Cet article a une texture</label>
+            <div id="cosmetics-texture-fields" class="choice-field hidden">
+              <select id="cosmetics-texture-mode"><option value="unique">Une seule texture</option><option value="plusieurs">Plusieurs textures au choix</option></select>
+              <input id="cosmetics-texture-values" placeholder="Ex. Lisse ou Lisse, Bouclé, Crépu" />
+            </div>
+          </div>
+
+          <div class="checkbox-field">
+            <label class="checkbox"><input type="checkbox" id="cosmetics-expiry-active" /> Indiquer une date de péremption</label>
+            <input id="cosmetics-expiry-date" type="date" class="hidden" />
+          </div>
+
+          <label>Contenu du coffret <span>(si l'article est un coffret ou un pack)</span><input id="cosmetics-box-content" placeholder="Ex. Nettoyant, crème, sérum" /></label>
+          <label>Nom de la gamme <span>(si l'article fait partie d'une collection)</span><input id="cosmetics-range-name" placeholder="Ex. Gamme Karité" /></label>
+</details>
+        </div>
+
+        <div id="fields-Accessoires" class="category-fields hidden">
+          <label>Type d'article<input id="accessories-item-type" placeholder="Ex. Montre, sac à main, collier" data-required-when-visible /></label>
+
+          <div class="choice-field">
+            <label>Couleur<select id="accessories-color-mode"><option value="unique">Une seule couleur</option><option value="plusieurs">Plusieurs couleurs au choix</option></select></label>
+            <input id="accessories-color-values" placeholder="Ex. Noir ou Noir, Argent" data-required-when-visible />
+          </div>
+
+          <details class="advanced"><summary>Options avancées (matériau, format, pack, gamme)</summary>
+<label>Matériau <span>(facultatif)</span><input id="accessories-material" placeholder="Ex. Acier, cuir, plastique" /></label>
+
+          <div class="checkbox-field">
+            <label class="checkbox"><input type="checkbox" id="accessories-dimension-active" /> Cet article a une dimension / un format</label>
+            <div id="accessories-dimension-fields" class="choice-field hidden">
+              <select id="accessories-dimension-type"><option value="Format">Format (Petit, Grand...)</option><option value="Taille-bague">Taille de bague</option></select>
+              <select id="accessories-dimension-mode"><option value="unique">Un seul format</option><option value="plusieurs">Plusieurs formats au choix</option></select>
+              <input id="accessories-dimension-values" placeholder="Ex. Petit format ou Petit format, Grand format" />
+            </div>
+          </div>
+
+          <label>Contenu du pack <span>(si l'article est vendu en lot)</span><input id="accessories-pack-content" placeholder="Ex. Collier + boucles d'oreilles" /></label>
+          <label>Nom de la gamme <span>(si l'article fait partie d'une collection)</span><input id="accessories-range-name" placeholder="Ex. Collection Or 2026" /></label>
+</details>
+        </div>
+
+        <label>Photo 1 <span>(facultatif pour le test)</span><input id="product-photo-1" type="file" accept="image/*" /></label>
+        <div class="photo-slot"><div class="image-preview" id="photo-preview-1">Aucune photo sélectionnée</div><label class="photo-variant">Cette photo montre <select id="product-photo-variant-1"><option value="">toutes les couleurs</option></select></label></div>
+        <details class="advanced"><summary>Plus de médias (photos 2 et 3, photos portées, vidéo)</summary>
+<label>Photo 2 <span>(facultatif)</span><input id="product-photo-2" type="file" accept="image/*" /></label>
+        <div class="photo-slot"><div class="image-preview" id="photo-preview-2">Aucune photo sélectionnée</div><label class="photo-variant">Cette photo montre <select id="product-photo-variant-2"><option value="">toutes les couleurs</option></select></label></div>
+        <label>Photo 3 <span>(facultatif)</span><input id="product-photo-3" type="file" accept="image/*" /></label>
+        <div class="photo-slot"><div class="image-preview" id="photo-preview-3">Aucune photo sélectionnée</div><label class="photo-variant">Cette photo montre <select id="product-photo-variant-3"><option value="">toutes les couleurs</option></select></label></div>
+        <label>Combien de ces photos sont des photos « portées » ? <span>(les dernières uploadées, ex. 1 = seule la Photo 3 si elle existe)</span>
+          <select id="product-worn-count"><option value="0">Aucune — que des photos produit</option><option value="1">1 photo portée</option><option value="2">2 photos portées</option><option value="3">3 photos portées</option></select>
+        </label>
+        <label>Courte vidéo <span>(facultatif)</span><input id="product-video-file" type="file" accept="video/*" /></label>
+        <div class="image-preview" id="video-preview">Aucune vidéo sélectionnée</div>
+</details>
+        <div class="modal-actions"><button class="cancel-button" type="button">Annuler</button><button class="save-button" type="submit">Enregistrer l’article</button></div>
+      </form>
+    </dialog>
+    <dialog class="product-modal" id="promotion-modal">
+      <form id="promotion-form" method="dialog">
+        <div class="modal-header"><div><p class="eyebrow">Promotion</p><h2>Créer un message</h2></div><button class="close-promotion" type="button" aria-label="Fermer">×</button></div>
+        <label>Article concerné<select id="promotion-product"></select></label>
+        <label>Réduction proposée (%)<input id="promotion-percent" type="number" min="1" max="90" value="10" /></label>
+        <label>Message à envoyer<input id="promotion-message" value="Bonjour 🌷 Une offre spéciale vous attend aujourd’hui." /></label>
+        <div class="promotion-result" id="promotion-result">Le message créé apparaîtra ici.</div>
+        <div class="modal-actions"><button class="cancel-promotion cancel-button" type="button">Annuler</button><button class="save-button" type="submit">Créer le message</button></div>
+      </form>
+    </dialog>
+    <dialog class="product-modal" id="customer-modal">
+      <div class="modal-header"><div><p class="eyebrow">Fiche cliente</p><h2 id="customer-modal-name">Cliente</h2></div><button class="close-customer-modal" type="button" aria-label="Fermer">×</button></div>
+      <div class="customer-summary" id="customer-modal-summary"></div>
+      <h3 class="customer-history-title">Historique des commandes</h3>
+      <div class="customer-history" id="customer-modal-history"></div>
+    </dialog>
+    <dialog class="product-modal" id="profile-modal">
+      <form id="profile-form" method="dialog">
+        <div class="modal-header"><div><p class="eyebrow">Mon espace</p><h2>Infos boutique</h2></div><button class="close-profile-modal" type="button" aria-label="Fermer">×</button></div>
+        <div class="profile-photo-field">
+          <div class="profile-photo-preview" id="profile-photo-preview">JK</div>
+          <label class="profile-photo-upload">Changer la photo de profil<input id="profile-photo-input" type="file" accept="image/*" hidden /></label>
+        </div>
+        <label>Nom de la boutique<input id="profile-shop-name-input" required autocomplete="off" placeholder="Ex. Josie Style" /></label>
+        <div class="profile-photo-field">
+          <div class="profile-logo-preview" id="profile-logo-preview">Aucun logo</div>
+          <label class="profile-photo-upload">Changer le logo de la boutique<input id="profile-logo-input" type="file" accept="image/*" hidden /></label>
+        </div>
+        <label>Nom de la vendeuse<input id="profile-seller-name-input" required autocomplete="off" placeholder="Ex. Josie K." /></label>
+        <label>Email ou numéro de téléphone<input id="profile-contact-input" autocomplete="off" placeholder="Ex. josie@example.com ou 70 12 34 56" /></label>
+        <label>Description de la boutique<textarea id="profile-description-input" rows="3" placeholder="Quelques mots sur votre boutique, vos produits, votre style..."></textarea></label>
+        <label>Horaires d'ouverture<input id="profile-hours-input" autocomplete="off" placeholder="Ex. Lun-Sam, 9h-19h" /></label>
+        <label>Délai de livraison<input id="profile-delivery-delay-input" autocomplete="off" placeholder="Ex. 2-3 jours" /></label>
+        <label>Zone de livraison<input id="profile-delivery-zone-input" autocomplete="off" placeholder="Ex. Ouagadougou" /></label>
+        <label>Tarif de livraison (FCFA)<input id="profile-delivery-fee-input" type="number" min="0" autocomplete="off" placeholder="Ex. 1000" /></label>
+        <div class="form-grid">
+          <label>Paiement échelonné à partir de (FCFA) <span>(vide = Ọjà transfère la demande)</span><input id="profile-installment-min-input" type="number" min="0" autocomplete="off" placeholder="Ex. 20000" /></label>
+          <label>Avance demandée (%)<input id="profile-installment-percent-input" type="number" min="1" max="100" autocomplete="off" placeholder="Ex. 50" /></label>
+        </div>
+        <div class="modal-actions"><button class="cancel-profile-button" type="button">Annuler</button><button class="save-button" type="submit">Enregistrer</button></div>
+      </form>
+    </dialog>
+    <dialog class="product-modal" id="settings-modal">
+      <div class="modal-header"><div><p class="eyebrow">Mon espace</p><h2>Réglages</h2></div><button class="close-settings-modal" type="button" aria-label="Fermer">×</button></div>
+      <div class="settings-section">
+        <h3>Mes données</h3>
+        <p class="settings-hint">Toutes les données de ce prototype (produits, commandes, profil) sont enregistrées uniquement sur cet appareil.</p>
+        <button type="button" class="settings-action" id="export-data-button">Exporter mes données (fichier .json)</button>
+      </div>
+      <div class="settings-section">
+        <h3>Assistant local (optionnel)</h3>
+        <p class="settings-hint">Un modèle de langue local (Ollama, gratuit, sur votre ordinateur) répond aux questions de conseil (lavage, coupe, usage d'un cosmétique…) et aux messages que les règles ne comprennent pas. Les prix, le stock et la livraison viennent toujours de vos données. En cas de doute, il transfère à la boutique.</p>
+        <label>Mode<select id="assistant-provider"><option value="none">Désactivé (règles uniquement)</option><option value="ollama">Ollama (local)</option></select></label>
+        <p class="settings-hint assistant-saved" id="assistant-saved">Les réglages s'enregistrent automatiquement, sans bouton.</p>
+        <div id="assistant-fields" class="assistant-fields hidden">
+          <label>Adresse d'Ollama<input id="assistant-url" placeholder="http://localhost:11434" autocomplete="off" /></label>
+          <label>Modèle<input id="assistant-model" placeholder="qwen2.5:7b" autocomplete="off" list="assistant-models" /></label>
+          <datalist id="assistant-models"><option value="qwen2.5:7b">Recommandé : meilleur français (5 Go)</option><option value="llama3.2">Léger (2 Go), rapide</option><option value="qwen2.5:3b">Compromis (2 Go)</option><option value="mistral">Mistral 7B (4 Go)</option></datalist>
+          <p class="settings-hint">Installer un modèle : <code>ollama pull qwen2.5:7b</code> dans un terminal, puis écrire son nom ici.</p>
+          <button type="button" class="settings-action" id="assistant-test-button">Tester la connexion</button>
+          <p class="settings-hint" id="assistant-status"></p>
+        </div>
+      </div>
+      <div class="settings-section">
+        <h3>Notifications</h3>
+        <p class="settings-hint">Un petit son quand une conversation passe « à vous de répondre ».</p>
+        <label class="checkbox settings-checkbox"><input type="checkbox" id="sound-toggle" /> Activer le son</label>
+      </div>
+      <div class="settings-section settings-danger">
+        <h3>Réinitialiser</h3>
+        <p class="settings-hint" id="reset-data-hint">Efface définitivement tout le contenu du prototype : produits, commandes, profil boutique, conversations en attente.</p>
+        <button type="button" class="settings-action settings-danger-action" id="reset-data-button">Effacer toutes les données</button>
+        <div class="settings-confirm hidden" id="reset-data-confirm">
+          <p>Cette action est irréversible. Confirmez-vous ?</p>
+          <div class="modal-actions">
+            <button type="button" class="cancel-button" id="reset-data-cancel">Annuler</button>
+            <button type="button" class="settings-danger-action" id="reset-data-confirm-button">Oui, tout effacer</button>
+          </div>
+        </div>
+      </div>
+      <p class="settings-version">Ọjà — Prototype v2.6</p>
+    </dialog>
+    <dialog class="media-viewer" id="media-viewer">
+      <button type="button" class="media-viewer-close" id="media-viewer-close" aria-label="Fermer">×</button>
+      <button type="button" class="media-viewer-nav media-viewer-prev" id="media-viewer-prev" aria-label="Photo précédente">‹</button>
+      <img id="media-viewer-image" src="" alt="Photo agrandie">
+      <button type="button" class="media-viewer-nav media-viewer-next" id="media-viewer-next" aria-label="Photo suivante">›</button>
+      <p class="media-viewer-count" id="media-viewer-count"></p>
+    </dialog>
+    <script src="store.js"></script>
+    <script src="nlu.js"></script>
+    <script src="dialogue.js"></script>
+    <script src="conversations.js"></script>
+    <script src="assistant.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

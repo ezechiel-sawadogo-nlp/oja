@@ -1,0 +1,101 @@
+{"text": "bonjour madame, c'est combien la robe ?", "intent": "price"}
+{"text": "cé combien ça ?", "intent": "price"}
+{"text": "prix svp", "intent": "price"}
+{"text": "ça coûte combien avec la livraison", "intent": "price"}
+{"text": "tu peux baisser un peu ?", "intent": "price", "note": "négociation -> prix + transfert"}
+{"text": "y a pas réduction ?", "intent": "price"}
+{"text": "dernier prix c'est combien", "intent": "price"}
+{"text": "ça reste encore ?", "intent": "stock"}
+{"text": "c'est toujours disponible ?", "intent": "stock"}
+{"text": "il y a en stock ?", "intent": "stock"}
+{"text": "le sac Lune il est encore là ?", "intent": "stock"}
+{"text": "la robe existe en rouge ?", "intent": "color", "entities": {"colors": ["rouge"]}}
+{"text": "vous avez en noir ?", "intent": "color", "entities": {"colors": ["noir"]}}
+{"text": "y a quelles couleurs ?", "intent": "color"}
+{"text": "je veux le bleu marine", "intent": "color", "entities": {"colors": ["bleu marine"]}}
+{"text": "vous avez la taille 42 ?", "intent": "size", "entities": {"sizes": ["42"]}}
+{"text": "ça existe en XL ?", "intent": "size", "entities": {"sizes": ["XL"]}}
+{"text": "je fais du L", "intent": "size", "entities": {"sizes": ["L"]}}
+{"text": "quelles tailles vous avez", "intent": "size"}
+{"text": "c'est en quoi ?", "intent": "material"}
+{"text": "c'est du vrai ?", "intent": "material"}
+{"text": "c'est solide au moins ?", "intent": "material"}
+{"text": "la qualité est bonne ?", "intent": "material"}
+{"text": "c'est quel tissu", "intent": "material"}
+{"text": "envoie moi la photo", "intent": "photos"}
+{"text": "d'autres photos stp", "intent": "photos"}
+{"text": "vous avez des photos de clientes ?", "intent": "photos"}
+{"text": "montre moi porté", "intent": "worn"}
+{"text": "sur un mannequin ça donne quoi", "intent": "worn"}
+{"text": "vidéo svp", "intent": "video"}
+{"text": "y a une petite vidéo ?", "intent": "video"}
+{"text": "vous fermez à quelle heure ?", "intent": "hours"}
+{"text": "vous êtes ouverts le dimanche ?", "intent": "hours"}
+{"text": "horaires ?", "intent": "hours"}
+{"text": "on peut livrer à Pissy ?", "intent": "delivery"}
+{"text": "vous livrez ?", "intent": "delivery"}
+{"text": "livraison c'est combien", "intent": "delivery"}
+{"text": "quand est-ce que ça arrive", "intent": "delivery"}
+{"text": "ça met combien de temps", "intent": "delivery"}
+{"text": "je viens prendre au magasin", "intent": "pickup"}
+{"text": "vous êtes où ?", "intent": "pickup"}
+{"text": "c'est possible de venir voir ?", "intent": "pickup"}
+{"text": "ya moyen de payer à la livraison ?", "intent": "payment"}
+{"text": "je peux payer par orange money ?", "intent": "payment", "entities": {"payment": "orange"}}
+{"text": "il faut payer avant ?", "intent": "payment"}
+{"text": "vous prenez wave ?", "intent": "payment", "entities": {"payment": "wave"}}
+{"text": "je paierai en 2 tranches", "intent": "installment"}
+{"text": "je peux payer en 2 fois ?", "intent": "installment"}
+{"text": "je donne une avance et le reste après ?", "intent": "installment"}
+{"text": "je prends", "intent": "order"}
+{"text": "ok je la prends", "intent": "order"}
+{"text": "je veux commander", "intent": "order"}
+{"text": "je prends 2", "intent": "order", "entities": {"quantity": 2}}
+{"text": "j'en veux trois", "intent": "order", "entities": {"quantity": 3}}
+{"text": "on valide", "intent": "order"}
+{"text": "merci ma soeur", "intent": "thanks"}
+{"text": "ok merci", "intent": "thanks"}
+{"text": "bonsoir madame", "intent": "greeting"}
+{"text": "slt", "intent": "greeting"}
+{"text": "bjr", "intent": "greeting"}
+{"text": "je veux des infos sur la robe", "intent": "info"}
+{"text": "c'est quoi exactement ?", "intent": "info"}
+{"text": "j'hésite un peu", "intent": "doubt"}
+{"text": "c'est pas une arnaque au moins ?", "intent": "doubt"}
+{"text": "non finalement", "intent": "negative"}
+{"text": "laisse tomber", "intent": "negative"}
+{"text": "ok c'est bon", "intent": "affirmative"}
+{"text": "oui", "intent": "affirmative"}
+{"text": "je veux parler à la boutique", "intent": "human"}
+{"text": "y a quelqu'un ?", "intent": "human"}
+{"text": "je peux avoir le numéro de la patronne ?", "intent": "human"}
+{"text": "j'ai vu sur facebook", "intent": "none", "note": "hors périmètre -> transfert"}
+{"text": "envoie moi ton numéro", "intent": "none"}
+{"text": "je suis à Bobo", "intent": "none", "note": "pas une question : transfert acceptable"}
+{"text": "ça se lave bien ?", "intent": "advice", "note": "question d'entretien -> conseil (assistant local), plus de transfert"}
+{"text": "c'est pour un cadeau vous emballez ?", "intent": "none"}
+{"text": "vous faites des retouches ?", "intent": "none"}
+{"text": "ma soeur a pris la même chez vous", "intent": "none"}
+{"text": "mmm", "intent": "none"}
+{"text": "👍", "intent": "none"}
+{"text": "python ça se lave en machine -m http.server 8000", "intent": "advice", "note": "le m de -m n'est pas une taille ; entretien -> conseil"}
+{"text": "en M svp", "intent": "size", "entities": {"sizes": ["M"]}}
+{"text": "M", "intent": "size", "entities": {"sizes": ["M"]}}
+{"text": "ça se lave en machine ?", "intent": "advice"}
+{"text": "je peux la repasser ?", "intent": "advice"}
+{"text": "ça rétrécit au lavage ?", "intent": "advice"}
+{"text": "le tissu est transparent ?", "intent": "advice", "note": "prime sur matière"}
+{"text": "ça taille petit ou grand ?", "intent": "advice", "note": "prime sur taille"}
+{"text": "c'est bon pour les peaux grasses ?", "intent": "advice", "note": "ne pas prendre pour un oui"}
+{"text": "la crème ça s'utilise comment ?", "intent": "advice"}
+{"text": "le sac est imperméable ?", "intent": "advice"}
+{"text": "la montre est étanche ?", "intent": "advice"}
+{"text": "ça se porte avec quoi ?", "intent": "advice", "note": "prime sur photo portée"}
+{"text": "c'est pour femme enceinte aussi ?", "intent": "advice"}
+{"text": "le bijou noircit avec le temps ?", "intent": "advice"}
+{"text": "ça convient pour un mariage ?", "intent": "advice"}
+{"text": "vous me conseillez quelle couleur pour une peau noire ?", "intent": "advice"}
+{"text": "vous faites des robes sur mesure ?", "intent": "none", "note": "faux ami : « mesure » n'est pas une taille (issu du jeu inédit, corrigé)"}
+{"text": "ma commande d'hier est arrivée où ?", "intent": "none", "note": "faux ami : suivi de commande, pas un achat (issu du jeu inédit, corrigé)"}
+{"text": "où en est ma commande", "intent": "none", "note": "suivi de commande"}
+{"text": "je valide ma commande", "intent": "order", "note": "« ma commande » reste un achat sans marqueur de suivi"}

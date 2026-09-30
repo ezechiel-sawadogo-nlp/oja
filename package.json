@@ -1,0 +1,21 @@
+{
+  "name": "oja",
+  "version": "2.6.0",
+  "description": "Ọjà — assistant de vente WhatsApp pour petites boutiques : NLU, moteur de dialogue piloté par schémas, LLM local (Ollama), serveur Node",
+  "private": true,
+  "author": "Ezéchiel Sawadogo",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "node server/server.js",
+    "chat": "node server/chat.js",
+    "test": "npm run test:engine && npm run eval:nlu && npm run test:ui",
+    "test:engine": "node server/engine.test.js",
+    "test:ui": "python tests/run_all.py",
+    "eval:nlu": "node eval_nlu.js --strict",
+    "eval:routing": "node eval_routing.js",
+    "eval:inedit": "node eval_nlu.js --file corpus/test_inedit.jsonl"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
